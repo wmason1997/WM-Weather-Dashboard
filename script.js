@@ -7,7 +7,19 @@ var sanDiegoLon = -117.161087;
 
 // Direct geocoding
 
+function directGeocode(cityName) {
+    var searchURL = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&limit=1&appid=' + APIKey;
 
+    fetch(searchURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (coordinates){
+            console.log(coordinates);
+        });
+}
+
+directGeocode('Seattle');
 
 // This might not be working simply because of incorrect coordinates. Try to get the direct geocoding working above first
 function getWeather() {
