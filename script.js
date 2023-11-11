@@ -58,6 +58,15 @@ async function directGeocode(cityName) {
         city.textContent = data.name;
         immediate_weather_placeholder.append(city);
 
+        // Append today's date
+        const todayDate = document.createElement("p");
+        todayDate.textContent = dayjs().format('MM/DD/YYYY');
+        immediate_weather_placeholder.append(todayDate);
+
+        // const todayDate = document.createElement("p");
+        // todayDate.textContent = data[0].dt_txt.slice(0,10);
+        // immediate_weather_placeholder.append(todayDate);
+
         // Append date
         // const today = document.createElement("p");
         // today.textContent = data.dt_txt.slice(0,10);
@@ -72,7 +81,22 @@ async function directGeocode(cityName) {
         icon.src = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
         immediate_weather_placeholder.append(icon);
 
-        // Append 
+        // temp
+        const currentTemperature = document.createElement('p');
+        currentTemperature.textContent = data.main.temp + " °F";
+        immediate_weather_placeholder.append(currentTemperature);
+        
+
+        // wind
+        const currentWind = document.createElement('p');
+        currentWind.textContent = data.wind.speed + " MPH";
+        immediate_weather_placeholder.append(currentWind);
+
+        // humidity
+        const currentHumidity = document.createElement('p');
+        currentHumidity.textContent = data.main.humidity + "%";
+        immediate_weather_placeholder.append(currentHumidity);
+
 
         getWeather(cityName);
 
@@ -122,7 +146,7 @@ function getWeather(cityName) {
 
                 // humidity etc.
                 const humidity = document.createElement('p');
-                humidity.textContent = day.main.humidity + " %";
+                humidity.textContent = day.main.humidity + "%";
                 fiveday_forecast_placeholder.append(humidity);
             })
         });
