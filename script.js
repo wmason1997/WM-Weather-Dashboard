@@ -58,6 +58,15 @@ async function directGeocode(cityName) {
         city.textContent = data.name;
         immediate_weather_placeholder.append(city);
 
+        // Append date
+        // const today = document.createElement("p");
+        // today.textContent = data.dt_txt.slice(0,10);
+        // immediate_weather_placeholder.append(today);
+
+        // const date = document.createElement("h2");
+        // date.textContent = day.dt_txt.slice(0,10);
+        // fiveday_forecast_placeholder.append(date);
+
         // Append weather icons
         const icon = document.createElement('img');
         icon.src = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
@@ -119,26 +128,6 @@ function getWeather(cityName) {
         });
 }
 
-
-
-// getWeather(sanDiegoLat, sanDiegoLon);
-
-//var temporaryCoordinates = directGeocode('Boston');
-
-//console.log(temporaryCoordinates);
-
-//getWeather(directGeocode("Chicago"));
-
-// Usage example
-// directGeocode("Chicago")
-//     .then(function (coordinates) {
-//         if (coordinates) {
-//             getWeather(coordinates.lat, coordinates.lon);
-//         }
-//     });
-
-
-// getWeather(temporaryCoordinates);
 
 // Filter for the afternoon information
 function isolateAfternoons(weatherData) {
