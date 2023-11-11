@@ -7,10 +7,10 @@ var sanDiegoLon = -117.161087;
 var submitButton = document.getElementById('search-button');
 var inputCity = document.getElementById('user-input-city');
 
-var immediate_weather_placeholder = document.getElementById("immediate-weather");
+var immediateWeatherPlaceholder = document.getElementById("immediate-weather");
 var searchedCities = document.getElementById('searched-cities');
 
-var fiveday_forecast_placeholder = document.getElementById("five-day-forecast");
+var fivedayForecastPlaceholder = document.getElementById("five-day-forecast");
 var cityHistory = JSON.parse(localStorage.getItem('cityHistory')) || [];
 cityHistory.forEach(renderButtons);
 
@@ -42,7 +42,7 @@ submitButton.addEventListener("click", function (event) {
 async function directGeocode(cityName) {
     //var searchURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&limit=1&appid=' + APIKey;
     var searchURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&units=imperial&appid=' + APIKey;
-    immediate_weather_placeholder.innerHTML = "";
+    immediateWeatherPlaceholder.innerHTML = "";
     try {
         const response = await fetch(searchURL);
         const data = await response.json();
@@ -56,46 +56,32 @@ async function directGeocode(cityName) {
         // Append to current weather section
         const city = document.createElement("h1");
         city.textContent = data.name;
-        immediate_weather_placeholder.append(city);
+        immediateWeatherPlaceholder.append(city);
 
         // Append today's date
         const todayDate = document.createElement("p");
         todayDate.textContent = dayjs().format('MM/DD/YYYY');
-        immediate_weather_placeholder.append(todayDate);
-
-        // const todayDate = document.createElement("p");
-        // todayDate.textContent = data[0].dt_txt.slice(0,10);
-        // immediate_weather_placeholder.append(todayDate);
-
-        // Append date
-        // const today = document.createElement("p");
-        // today.textContent = data.dt_txt.slice(0,10);
-        // immediate_weather_placeholder.append(today);
-
-        // const date = document.createElement("h2");
-        // date.textContent = day.dt_txt.slice(0,10);
-        // fiveday_forecast_placeholder.append(date);
+        immediateWeatherPlaceholder.append(todayDate);
 
         // Append weather icons
         const icon = document.createElement('img');
         icon.src = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
-        immediate_weather_placeholder.append(icon);
+        immediateWeatherPlaceholder.append(icon);
 
         // temp
         const currentTemperature = document.createElement('p');
         currentTemperature.textContent = data.main.temp + " °F";
-        immediate_weather_placeholder.append(currentTemperature);
-        
+        immediateWeatherPlaceholder.append(currentTemperature);
 
         // wind
         const currentWind = document.createElement('p');
         currentWind.textContent = data.wind.speed + " MPH";
-        immediate_weather_placeholder.append(currentWind);
+        immediateWeatherPlaceholder.append(currentWind);
 
         // humidity
         const currentHumidity = document.createElement('p');
         currentHumidity.textContent = data.main.humidity + "%";
-        immediate_weather_placeholder.append(currentHumidity);
+        immediateWeatherPlaceholder.append(currentHumidity);
 
 
         getWeather(cityName);
@@ -105,9 +91,6 @@ async function directGeocode(cityName) {
             return null;
     }
 }
-
-// directGeocode('Seattle'); // gets lat and long of Seattle
-
 
 function getWeather(cityName) {
     // fetch request gets a 5 day weather forecast in 3-hour increments from OpenWeatherMap API
@@ -122,32 +105,32 @@ function getWeather(cityName) {
             console.log(data);
             console.log(isolateAfternoons(data));
             const response = isolateAfternoons(data);
-            fiveday_forecast_placeholder.innerHTML =""; // Clear existing HTML fiveday_forecast_placeholder so that this does not turn into a growing chain of weather info
+            fivedayForecastPlaceholder.innerHTML =""; // Clear existing HTML fivedayForecastPlaceholder so that this does not turn into a growing chain of weather info
             response.forEach(function(day) { 
                 // date
                 const date = document.createElement("h2");
                 date.textContent = dayjs(day.dt_txt.slice(0,10)).format('MM/DD/YYYY'); // Used dayjs to get the format to match the example picture
-                fiveday_forecast_placeholder.append(date);
+                fivedayForecastPlaceholder.append(date);
                 
                 // icon
                 const icon = document.createElement('img');
                 icon.src = `http://openweathermap.org/img/w/${day.weather[0].icon}.png`;
-                fiveday_forecast_placeholder.append(icon);
+                fivedayForecastPlaceholder.append(icon);
 
                 // temperature
                 const temperature = document.createElement('p');
                 temperature.textContent = day.main.temp + " °F";
-                fiveday_forecast_placeholder.append(temperature);
+                fivedayForecastPlaceholder.append(temperature);
                 
                 // wind speed
                 const windSpeed = document.createElement('p');
                 windSpeed.textContent = day.wind.speed + " MPH";
-                fiveday_forecast_placeholder.append(windSpeed);
+                fivedayForecastPlaceholder.append(windSpeed);
 
                 // humidity etc.
                 const humidity = document.createElement('p');
                 humidity.textContent = day.main.humidity + "%";
-                fiveday_forecast_placeholder.append(humidity);
+                fivedayForecastPlaceholder.append(humidity);
             })
         });
 }
