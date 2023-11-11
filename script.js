@@ -8,49 +8,44 @@ var submitButton = document.getElementById('search-button');
 var inputCity = document.getElementById('user-input-city');
 
 
-
-submitButton.addEventListener("click", function (event){
+submitButton.addEventListener("click", function (event) {
     event.preventDefault();
     var searchedCity = inputCity.value.trim();
 
-    directGeocode(searchedCity);
+    directGeocode(searchedCity)
+        .then(function (coordinates) {
+            if (coordinates) {
+                getWeather(coordinates.lat, coordinates.lon);
+            }
+        });
 
     // add local storage bit
     
 });
 
-// Direct geocoding
 
+// Direct geocoding
 async function directGeocode(cityName) {
-    var searchURL = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&limit=1&appid=' + APIKey;
+    var searchURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&limit=1&appid=' + APIKey;
 
     try {
         const response = await fetch(searchURL);
         const data = await response.json();
 
-        console.log(data);
-        console.log(data[0].lat);
-        console.log(data[0].lon);
+        if (data.length > 0) {
+            console.log(data);
+            console.log(data[0].lat);
+            console.log(data[0].lon);
 
-        return { lat: data[0].lat, lon: data[0].lon };
+            return { lat: data[0].lat, lon: data[0].lon };
+        } else {
+            console.error('No data found for the city:', cityName);
+            return null;
+        }
     } catch (error) {
-        console.error('Error:', error);
-        return null;
+            console.error('Error:', error);
+            return null;
     }
-    // fetch(searchURL)
-    //     .then(function (response) {
-    //         return response.json();
-    //     })
-    //     .then(function (data){
-    //         console.log(data);
-    //         console.log(data[0].lat);
-    //         console.log(data[0].lon);
-    //         // console.log(coordinates.lat);
-    //         // console.log(coordinates.lon);
-    //         return [data[0].lat, data[0].lon];
-    //     });
-
-    // // return [data[0].lat, data[0].lon];
 }
 
 directGeocode('Seattle'); // gets lat and long of Seattle
@@ -78,18 +73,19 @@ var temporaryCoordinates = directGeocode('Boston');
 
 console.log(temporaryCoordinates);
 
+//getWeather(directGeocode("Chicago"));
+
+// Usage example
+directGeocode("Chicago")
+    .then(function (coordinates) {
+        if (coordinates) {
+            getWeather(coordinates.lat, coordinates.lon);
+        }
+    });
+
 
 // getWeather(temporaryCoordinates);
 
-
-// getWeather();
-
-//getWeather(directGeocode("Chicago"));
-
-
-// directGeocode('Seattle'); // gets lat and long of Seattle
-
-// getWeatherForCity('Seattle'); // Call this function to get the 5-day weather forecast for Seattle
 
 
 
