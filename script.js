@@ -1,9 +1,23 @@
 // Consult https://openweathermap.org/forecast5 and https://openweathermap.org/api/geocoding-api for the city search (direct geocoding)
 
 var APIKey = "00cae84c06c0ac5953b157e62ece3d01";
-var submitButton = document.getElementById('search-button');
 var sanDiegoLat = 32.715736;
 var sanDiegoLon = -117.161087;
+
+var submitButton = document.getElementById('search-button');
+var inputCity = document.getElementById('user-input-city');
+
+
+
+submitButton.addEventListener("click", function (event){
+    event.preventDefault();
+    var searchedCity = inputCity.value.trim();
+
+    directGeocode(searchedCity);
+
+    // add local storage bit
+    
+});
 
 // Direct geocoding
 
@@ -39,9 +53,7 @@ async function directGeocode(cityName) {
     // // return [data[0].lat, data[0].lon];
 }
 
-
-
-// directGeocode('Seattle'); // gets lat and long of Seattle
+directGeocode('Seattle'); // gets lat and long of Seattle
 
 
 function getWeather(inputLat, inputLon) {
@@ -58,9 +70,7 @@ function getWeather(inputLat, inputLon) {
         });
 }
 
-// getWeather();
 
-//getWeather(directGeocode("Chicago"));
 
 getWeather(sanDiegoLat, sanDiegoLon);
 
@@ -69,11 +79,15 @@ var temporaryCoordinates = directGeocode('Boston');
 console.log(temporaryCoordinates);
 
 
-getWeather(temporaryCoordinates);
-
-//Usage of directGeocode with async/await
+// getWeather(temporaryCoordinates);
 
 
+// getWeather();
+
+//getWeather(directGeocode("Chicago"));
+
+
+// directGeocode('Seattle'); // gets lat and long of Seattle
 
 // getWeatherForCity('Seattle'); // Call this function to get the 5-day weather forecast for Seattle
 
