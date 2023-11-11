@@ -92,16 +92,30 @@ function getWeather(cityName) {
             console.log(isolateAfternoons(data));
             const response = isolateAfternoons(data);
             response.forEach(function(day) { 
-                const city = document.createElement("h2");
-                city.textContent = day.dt_txt.slice(0,10);
-                fiveday_forecast_placeholder.append(city);
-
-                // wind 
-                // humidity etc.
-        
+                // date
+                const date = document.createElement("h2");
+                date.textContent = day.dt_txt.slice(0,10);
+                fiveday_forecast_placeholder.append(date);
+                
+                // icon
                 const icon = document.createElement('img');
                 icon.src = `http://openweathermap.org/img/w/${day.weather[0].icon}.png`;
                 fiveday_forecast_placeholder.append(icon);
+
+                // temperature
+                const temperature = document.createElement('p');
+                temperature.textContent = day.main.temp + " °F";
+                fiveday_forecast_placeholder.append(temperature);
+                
+                // wind speed
+                const windSpeed = document.createElement('p');
+                windSpeed.textContent = day.wind.speed + " MPH";
+                fiveday_forecast_placeholder.append(windSpeed);
+
+                // humidity etc.
+                const humidity = document.createElement('p');
+                humidity.textContent = day.main.humidity + " %";
+                fiveday_forecast_placeholder.append(humidity);
             })
         });
 }
