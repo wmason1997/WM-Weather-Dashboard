@@ -14,17 +14,21 @@ function directGeocode(cityName) {
         .then(function (response) {
             return response.json();
         })
-        .then(function (coordinates){
-            console.log(coordinates);
+        .then(function (data){
+            console.log(data);
+            console.log(data[0].lat);
+            console.log(data[0].lon);
+            // console.log(coordinates.lat);
+            // console.log(coordinates.lon);
+            return [data[0].lat, data[0].lon];
         });
 }
 
-directGeocode('Seattle');
+directGeocode('Seattle'); // gets lat and long of Seattle
 
-// This might not be working simply because of incorrect coordinates. Try to get the direct geocoding working above first
-function getWeather() {
+function getWeather(inputLat, inputLon) {
     // fetch request gets a 5 day weather forecast in 3-hour increments from OpenWeatherMap API
-    var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat='+sanDiegoLat+'&lon=' + sanDiegoLon + '&appid=' + APIKey;
+    var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat='+inputLat+'&lon=' + inputLon + '&appid=' + APIKey;
     // https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
     fetch(requestUrl)
@@ -36,4 +40,12 @@ function getWeather() {
         });
 }
 
-getWeather();
+// getWeather();
+
+//getWeather(directGeocode("Chicago"));
+
+getWeather(sanDiegoLat, sanDiegoLon);
+
+var temporaryCoordinates = directGeocode('Boston');
+
+console.log(temporaryCoordinates);
