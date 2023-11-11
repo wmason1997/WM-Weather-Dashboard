@@ -60,7 +60,7 @@ async function directGeocode(cityName) {
 
         // Append today's date
         const todayDate = document.createElement("p");
-        todayDate.textContent = dayjs().format('YYYY-MM-DD');
+        todayDate.textContent = dayjs().format('MM/DD/YYYY');
         immediate_weather_placeholder.append(todayDate);
 
         // const todayDate = document.createElement("p");
@@ -126,7 +126,7 @@ function getWeather(cityName) {
             response.forEach(function(day) { 
                 // date
                 const date = document.createElement("h2");
-                date.textContent = day.dt_txt.slice(0,10); //.format('MM/DD/YYYY');
+                date.textContent = dayjs(day.dt_txt.slice(0,10)).format('MM/DD/YYYY'); // Used dayjs to get the format to match the example picture
                 fiveday_forecast_placeholder.append(date);
                 
                 // icon
