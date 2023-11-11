@@ -62,6 +62,7 @@ function getWeather(inputLat, inputLon) {
         })
         .then(function (data){
             console.log(data);
+            console.log(isolateAfternoons(data));
         });
 }
 
@@ -86,6 +87,21 @@ directGeocode("Chicago")
 
 // getWeather(temporaryCoordinates);
 
+// Filter for the afternoon information
+function isolateAfternoons(weatherData) {
+    const earlyAfterNoon = 13;
+    const lateAfterNoon = 17;
+
+    const afternoonData = weatherData.list.filter(item => {
+        const timestamp = item.dt * 1000; // Convert to milliseconds
+        const date = new Date(timestamp);
+        const hour = date.getHours();
+
+        return hour > earlyAfterNoon && hour < lateAfterNoon;
+    });
+
+    return afternoonData;
+}
 
 
 
