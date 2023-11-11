@@ -34,8 +34,6 @@ submitButton.addEventListener("click", function (event) {
                 getWeather(coordinates.lat, coordinates.lon);
             }
         });
-
-    // add local storage bit
     
 });
 
@@ -91,6 +89,7 @@ function getWeather(cityName) {
             console.log(data);
             console.log(isolateAfternoons(data));
             const response = isolateAfternoons(data);
+            fiveday_forecast_placeholder.innerHTML =""; // Clear existing HTML fiveday_forecast_placeholder so that this does not turn into a growing chain of weather info
             response.forEach(function(day) { 
                 // date
                 const date = document.createElement("h2");
