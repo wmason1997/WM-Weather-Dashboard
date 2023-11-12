@@ -18,13 +18,13 @@ header {
     justify-content: space-evenly;
 }
 
-.left-column {
+/* .left-column {
     /* background-color: red; */
-}
+/* } */
 
-#searched-cities {
+/* #searched-cities { */
     
-}
+/* } */
 
 .searchedCitiesButtons {
     display: flex;
@@ -40,4 +40,14 @@ header {
 .searchedCitiesButtons:hover {
     background-color: lightblue;
     
+}
+
+.immediateWeatherStyling {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-style: solid;
+    border-color: black;
+    margin: 10px;
+    text-align: center;
 }
