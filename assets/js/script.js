@@ -108,30 +108,41 @@ function getWeather(cityName) {
             const response = isolateAfternoons(data);
             fivedayForecastPlaceholder.innerHTML =""; // Clear existing HTML fivedayForecastPlaceholder so that this does not turn into a growing chain of weather info
             response.forEach(function(day) { 
+
+                const verticalCard = document.createElement("div");
+                //verticalCard.classList.add("col-md", "col-xl-2");
+                //verticalCard.classList.add("horizontalSpread");
+
+
                 // date
                 const date = document.createElement("h2");
                 date.textContent = dayjs(day.dt_txt.slice(0,10)).format('MM/DD/YYYY'); // Used dayjs to get the format to match the example picture
-                fivedayForecastPlaceholder.append(date);
+                verticalCard.append(date);
                 
                 // icon
                 const icon = document.createElement('img');
                 icon.src = `http://openweathermap.org/img/w/${day.weather[0].icon}.png`;
-                fivedayForecastPlaceholder.append(icon);
+                verticalCard.append(icon);
 
                 // temperature
                 const temperature = document.createElement('p');
                 temperature.textContent = day.main.temp + " °F";
-                fivedayForecastPlaceholder.append(temperature);
+                verticalCard.append(temperature);
                 
                 // wind speed
                 const windSpeed = document.createElement('p');
                 windSpeed.textContent = day.wind.speed + " MPH";
-                fivedayForecastPlaceholder.append(windSpeed);
+                verticalCard.append(windSpeed);
 
                 // humidity etc.
                 const humidity = document.createElement('p');
                 humidity.textContent = day.main.humidity + "%";
-                fivedayForecastPlaceholder.append(humidity);
+                verticalCard.append(humidity);
+
+                fivedayForecastPlaceholder.append(verticalCard);
+
+
+
             })
         });
 }

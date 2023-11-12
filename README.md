@@ -12,6 +12,8 @@ I had a tutoring session with Mila Hose on 11/11/2023. Mila helped me with getti
 
 My use of BootStrap was informed by the 28-Stu_Mini_Project in the 05-Third_Party_APIs in the UCSD-VIRT-FSF-PT-09-2023-U-LOLC GitLab repository.
 
+I referenced [https://css-tricks.com/snippets/css/a-guide-to-flexbox/](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) and [https://www.w3schools.com/css/css3_buttons.asp](https://www.w3schools.com/css/css3_buttons.asp) for help with the fiveday display and button stylings.
+
 
 ## Screenshots of Deployed Application ##
 ![Screenshot]()
