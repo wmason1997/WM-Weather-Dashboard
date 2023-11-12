@@ -20,3 +20,7 @@ header {
     
 }
 
+.searchedCitiesButtons {
+    display: flex;
+    flex-direction: column;
+}

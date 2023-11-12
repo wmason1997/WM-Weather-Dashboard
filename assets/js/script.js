@@ -16,6 +16,7 @@ cityHistory.forEach(renderButtons);
 
 function renderButtons(city){
     var button = document.createElement('button');
+    button.classList.add("searchedCitiesButtons");
     button.value = city;
     button.textContent = city;
     button.addEventListener("click", function() { 
