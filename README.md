@@ -10,8 +10,13 @@ Initially, my code was throwing all sorts of errors because I failed to realize 
 
 I had a tutoring session with Mila Hose on 11/11/2023. Mila helped me with getting the getWeather function to work based on input city name rather than relying on the directGeocode function. Mila also instructed me to use camelCasing wherever possible so I am making an effort to do that in the variable names in the script.js. Mila also helped me to get the date and weather icon to display in the five day forecast with DOM manipulation. Mila helped me to write a renderButtons function so that each previously searched city can be clicked again and have the results display again that utilized localStorage within the directGeocode storage. Thanks Mila!
 
+My use of BootStrap was informed by the 28-Stu_Mini_Project in the 05-Third_Party_APIs in the UCSD-VIRT-FSF-PT-09-2023-U-LOLC GitLab repository.
+
 
 ## Screenshots of Deployed Application ##
+![Screenshot]()
+![Screenshot]()
+![Screenshot]()
 
 
 ## Link to Deployed Application ##

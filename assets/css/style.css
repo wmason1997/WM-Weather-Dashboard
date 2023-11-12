@@ -1,3 +1,9 @@
+:root {
+    --headerColor: blue;
+    --darkblue: #2c3e50;
+    --lightblue: #3498db;
+}
+
 /* Header element selector */
 header {
     background-color: blue;
