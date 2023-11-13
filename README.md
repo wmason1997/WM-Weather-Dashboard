@@ -18,7 +18,7 @@ I referenced [https://css-tricks.com/snippets/css/a-guide-to-flexbox/](https://c
 ## Screenshots of Deployed Application ##
 ![Screenshot]()
 ![Screenshot]()
-![Screenshot]()
+
 
 
 ## Link to Deployed Application ##

@@ -48,10 +48,15 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-style: solid;
-    border-color: black;
+    /* border-style: solid; */
+    /* border-color: black; */
     margin: 10px;
     text-align: center;
+}
+
+.immediateBorder {
+    border-style: solid;
+    border-color: black;
 }
 
 #search-button {

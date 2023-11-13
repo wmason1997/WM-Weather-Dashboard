@@ -39,13 +39,18 @@ submitButton.addEventListener("click", function (event) {
 
 // Direct geocoding
 async function directGeocode(cityName) {
-    var searchURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&units=imperial&appid=' + APIKey;
+    var searchURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&limit=1&appid=' + APIKey;
     immediateWeatherPlaceholder.innerHTML = "";
     try {
         const response = await fetch(searchURL);
         const data = await response.json();
 
-        // return { lat: data[0].lat, lon: data[0].lon };
+        if (data.length > 0) {
+            const coordinates = {
+                lat: data[0].lat,
+                lon: data[0].lon
+            };
+        
 
         console.log(data);
         if (!cityHistory.includes(data.name)) {
@@ -65,42 +70,47 @@ async function directGeocode(cityName) {
         immediateWeatherPlaceholder.append(todayDate);
 
         // Append weather icons
-        const icon = document.createElement('img');
-        icon.src = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
-        immediateWeatherPlaceholder.append(icon);
+        // const icon = document.createElement('img');
+        // icon.src = `https://openweathermap.org/img/w/${data.weather.icon}.png`;
+        // immediateWeatherPlaceholder.append(icon);
 
-        // temp
-        const currentTemperature = document.createElement('p');
-        currentTemperature.textContent = "Temp: " + data.main.temp + " °F";
-        immediateWeatherPlaceholder.append(currentTemperature);
+        // // temp
+        // const currentTemperature = document.createElement('p');
+        // currentTemperature.textContent = "Temp: " + data.main.temp + " °F";
+        // immediateWeatherPlaceholder.append(currentTemperature);
 
-        // wind
-        const currentWind = document.createElement('p');
-        currentWind.textContent = "Wind: " + data.wind.speed + " MPH";
-        immediateWeatherPlaceholder.append(currentWind);
+        // // wind
+        // const currentWind = document.createElement('p');
+        // currentWind.textContent = "Wind: " + data.wind.speed + " MPH";
+        // immediateWeatherPlaceholder.append(currentWind);
 
-        // humidity
-        const currentHumidity = document.createElement('p');
-        currentHumidity.textContent = "Humidity: " + data.main.humidity + "%";
-        immediateWeatherPlaceholder.append(currentHumidity);
+        // // humidity
+        // const currentHumidity = document.createElement('p');
+        // currentHumidity.textContent = "Humidity: " + data.main.humidity + "%";
+        // immediateWeatherPlaceholder.append(currentHumidity);
 
-        immediateWeatherPlaceholder.classList.add("immediateBorder");
-
-
-        getWeather(cityName);
+        // immediateWeatherPlaceholder.classList.add("immediateBorder");
 
 
+        getWeather(directGeocode(cityName));
+
+            return coordinates;
+        } else {
+            console.error('City not found');
+            return null;
+        }
     } catch (error) {
             console.error('Error:', error);
             return null;
     }
 }
 
-function getWeather(cityName) {
+function getWeather(inputLat, inputLon) {
     // fetch request gets a 5 day weather forecast in 3-hour increments from OpenWeatherMap API
-    var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' + APIKey;
+    // var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' + APIKey;
     // https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
     // var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&units=imperial&appid=' + APIKey;
+    var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat='+inputLat+'&lon=' + inputLon + '&appid=' + APIKey;
 
     fetch(requestUrl)
         .then(function (response) {
