@@ -18,30 +18,29 @@
     <body>
         <main class="container-fluid">
             <div class="row">
-                <!-- <section class="left-column"> -->
-                <!-- City Search Intake Area on Left -->
+                <!-- City Search Intake Area on left -->
                 <div class="col-md col-xl-2">
                     <div class="card mb-3">
                         <div class="card-body">
                             <p>
                                 <label for="user-input-city" style="display: flex; justify-content: center;">Search for a City:</label>
-                                <input type="text" id="user-input-city" name="user-input-city" style="display: flex; width: 100%;">
+                                <input
+                                    type="text"
+                                    id="user-input-city"
+                                    name="user-input-city"
+                                    style="display: flex; width: 100%;"
+                                >
                                 <button id="search-button" type="button">Search!</button>
                             </p>
                         </div>
                         <section id="searched-cities"></section>
                     </div>
-                    <!-- </section> -->
-                    <!-- Immediate Weather and 5-day forecast on the 2/3 right of screen -->
-
                 </div>
-
                 <div class="col-md col-xl-10">
-                    
                     <section id="immediate-weather" class="immediateWeatherStyling">
                         <p></p>
                     </section>
-                    <!-- Five day forecast area -->
+                    <!-- Five day forecast area on the right -->
                     <div>
                         <p style="text-align: center;">5-Day Forecast</p>
                     </div>
@@ -49,7 +48,6 @@
                         <p></p>
                     </section>
                 </div>
-
             </div>
         </main>
         <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js" integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
