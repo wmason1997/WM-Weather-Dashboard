@@ -12,22 +12,14 @@ header {
     padding: 20px 0px;
 }
 
-
-
+/* horizontalSpread class selector */
 .horizontalSpread {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
-/* .left-column {
-    /* background-color: red; */
-/* } */
-
-/* #searched-cities { */
-    
-/* } */
-
+/* searchedCitiesButtons class selector */
 .searchedCitiesButtons {
     display: flex;
     flex-direction: column;
@@ -39,11 +31,13 @@ header {
     background-color: gray;
 }
 
+/* hovering UI specified for searchedCitiesButtons class */
 .searchedCitiesButtons:hover {
     background-color: var(--lightblue);
     
 }
 
+/* immediateWeatherStyling class selector */
 .immediateWeatherStyling {
     display: flex;
     flex-direction: column;
@@ -54,17 +48,20 @@ header {
     text-align: center;
 }
 
+/* immediateBorder class selector. Allows for it to toggle */
 .immediateBorder {
     border-style: solid;
     border-color: black;
 }
 
+/* verticalCard class selector */
 .verticalCard {
     background-color: var(--darkblue);
     color: white;
     padding: 20px;
 }
 
+/* searcht-button id styling */
 #search-button {
     display: flex;
     align-items: center;
@@ -75,6 +72,7 @@ header {
     background-color: gray;
 }
 
+/* hovering UI for search-button id */
 #search-button:hover{
     background-color: var(--lightblue);
 }
