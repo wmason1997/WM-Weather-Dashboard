@@ -1,17 +1,18 @@
 // Consult https://openweathermap.org/forecast5 and https://openweathermap.org/api/geocoding-api for the city search (direct geocoding)
 
+// Variable definitions for the API key and DOM elements
 var APIKey = "00cae84c06c0ac5953b157e62ece3d01"; // my API key
-
 var submitButton = document.getElementById('search-button');
 var inputCity = document.getElementById('user-input-city');
-
 var immediateWeatherPlaceholder = document.getElementById("immediate-weather");
 var searchedCities = document.getElementById('searched-cities');
-
 var fivedayForecastPlaceholder = document.getElementById("five-day-forecast");
+
+// Calling from localStorage so that previously searched cities get buttons loaded
 var cityHistory = JSON.parse(localStorage.getItem('cityHistory')) || [];
 cityHistory.forEach(renderButtons);
 
+// renderButtons function definition
 function renderButtons(city){
     var button = document.createElement('button');
     button.classList.add("searchedCitiesButtons");
@@ -23,6 +24,7 @@ function renderButtons(city){
     searchedCities.append(button);
 };
 
+// When submit button is clicked the directGeocode function and API call is fired
 submitButton.addEventListener("click", function (event) {
     event.preventDefault();
     var searchedCity = inputCity.value.trim();
@@ -36,7 +38,6 @@ submitButton.addEventListener("click", function (event) {
     
 });
 
-
 // Direct geocoding
 async function directGeocode(cityName) {
     var searchURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&units=imperial&appid=' + APIKey;
@@ -44,7 +45,6 @@ async function directGeocode(cityName) {
     try {
         const response = await fetch(searchURL);
         const data = await response.json();
-
         // return { lat: data[0].lat, lon: data[0].lon };
 
         console.log(data);
@@ -84,8 +84,7 @@ async function directGeocode(cityName) {
         currentHumidity.textContent = "Humidity: " + data.main.humidity + "%";
         immediateWeatherPlaceholder.append(currentHumidity);
 
-        immediateWeatherPlaceholder.classList.add("immediateBorder");
-
+        immediateWeatherPlaceholder.classList.add("immediateBorder"); // This toggles on a border once a city is selected. Blank upon screen load.
 
         getWeather(cityName);
 
@@ -114,6 +113,7 @@ function getWeather(cityName) {
             response.forEach(function(day) { 
 
                 const verticalCard = document.createElement("div");
+                verticalCard.classList.add("verticalCard");
 
                 // date
                 const date = document.createElement("h2");
@@ -146,7 +146,7 @@ function getWeather(cityName) {
         });
 }
 
-// Filter for the afternoon information
+// Filter for the afternoon information (between hours of 1PM and 5PM, trying to target the 3:00 PM information)
 function isolateAfternoons(weatherData) {
     //const today = new Date();
 

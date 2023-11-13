@@ -59,6 +59,12 @@ header {
     border-color: black;
 }
 
+.verticalCard {
+    background-color: var(--darkblue);
+    color: white;
+    padding: 20px;
+}
+
 #search-button {
     display: flex;
     align-items: center;
