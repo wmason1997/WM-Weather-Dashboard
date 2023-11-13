@@ -16,9 +16,8 @@ I referenced [https://css-tricks.com/snippets/css/a-guide-to-flexbox/](https://c
 
 
 ## Screenshots of Deployed Application ##
-![Screenshot]()
-![Screenshot]()
-
+![Screenshot](assets/images/WM-Weather-Dashboard-Honolulu.png)
+![Screenshot](assets/images/WM-Weather-Dashboard-Los-Angeles.png)
 
 
 ## Link to Deployed Application ##
