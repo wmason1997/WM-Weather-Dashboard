@@ -71,17 +71,17 @@ async function directGeocode(cityName) {
 
         // temp
         const currentTemperature = document.createElement('p');
-        currentTemperature.textContent = data.main.temp + " °F";
+        currentTemperature.textContent = "Temp: " + data.main.temp + " °F";
         immediateWeatherPlaceholder.append(currentTemperature);
 
         // wind
         const currentWind = document.createElement('p');
-        currentWind.textContent = data.wind.speed + " MPH";
+        currentWind.textContent = "Wind: " + data.wind.speed + " MPH";
         immediateWeatherPlaceholder.append(currentWind);
 
         // humidity
         const currentHumidity = document.createElement('p');
-        currentHumidity.textContent = data.main.humidity + "%";
+        currentHumidity.textContent = "Humidity: " + data.main.humidity + "%";
         immediateWeatherPlaceholder.append(currentHumidity);
 
 
@@ -97,6 +97,7 @@ function getWeather(cityName) {
     // fetch request gets a 5 day weather forecast in 3-hour increments from OpenWeatherMap API
     var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' + APIKey;
     // https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+    // var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&units=imperial&appid=' + APIKey;
 
     fetch(requestUrl)
         .then(function (response) {
@@ -126,22 +127,20 @@ function getWeather(cityName) {
 
                 // temperature
                 const temperature = document.createElement('p');
-                temperature.textContent = day.main.temp + " °F";
+                temperature.textContent = "Temp: " + day.main.temp + " °F";
                 verticalCard.append(temperature);
                 
                 // wind speed
                 const windSpeed = document.createElement('p');
-                windSpeed.textContent = day.wind.speed + " MPH";
+                windSpeed.textContent = "Wind: " + day.wind.speed + " MPH";
                 verticalCard.append(windSpeed);
 
                 // humidity etc.
                 const humidity = document.createElement('p');
-                humidity.textContent = day.main.humidity + "%";
+                humidity.textContent = "Humidity: " + day.main.humidity + "%";
                 verticalCard.append(humidity);
 
                 fivedayForecastPlaceholder.append(verticalCard);
-
-
 
             })
         });
@@ -150,6 +149,10 @@ function getWeather(cityName) {
 
 // Filter for the afternoon information
 function isolateAfternoons(weatherData) {
+    const today = new Date();
+
+    
+
     const earlyAfterNoon = 13;
     const lateAfterNoon = 17;
 

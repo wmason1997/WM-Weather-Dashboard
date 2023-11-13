@@ -6,11 +6,13 @@
 
 /* Header element selector */
 header {
-    background-color: blue;
+    background-color: var(--headerColor);
     color: white;
     text-align: center;
     padding: 20px 0px;
 }
+
+
 
 .horizontalSpread {
     display: flex;
@@ -38,7 +40,7 @@ header {
 }
 
 .searchedCitiesButtons:hover {
-    background-color: lightblue;
+    background-color: var(--lightblue);
     
 }
 
@@ -50,4 +52,18 @@ header {
     border-color: black;
     margin: 10px;
     text-align: center;
+}
+
+#search-button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0px;
+    border-radius: 6px;
+    background-color: gray;
+}
+
+#search-button:hover{
+    background-color: var(--lightblue);
 }
