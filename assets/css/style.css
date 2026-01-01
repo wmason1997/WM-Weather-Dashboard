@@ -1,15 +1,23 @@
 :root {
-    --headerColor: blue;
+    --headerColor: #1e3a8a;
     --darkblue: #2c3e50;
     --lightblue: #3498db;
+    --hoverBlue: #2980b9;
+    --buttonGray: #6b7280;
+    --buttonHoverGray: #4b5563;
+    --borderLight: #e5e7eb;
+    --shadowColor: rgba(0, 0, 0, 0.1);
 }
 
 /* Header element selector */
 header {
-    background-color: var(--headerColor);
+    background: linear-gradient(135deg, var(--headerColor) 0%, #2563eb 100%);
     color: white;
     text-align: center;
-    padding: 20px 0px;
+    padding: 30px 0;
+    font-size: 40px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px var(--shadowColor);
 }
 
 /* horizontalSpread class selector */
@@ -17,6 +25,35 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Search input field styling */
+#user-input-city {
+    display: flex;
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid var(--borderLight);
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#user-input-city:focus {
+    outline: none;
+    border-color: var(--lightblue);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* Label styling for search input */
+label[for="user-input-city"] {
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #1f2937;
 }
 
 /* searchedCitiesButtons class selector */
@@ -24,17 +61,32 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
     text-align: center;
-    margin: 10px 0px;
-    border-radius: 6px;
-    background-color: gray;
+    margin: 10px 0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background-color: var(--buttonGray);
+    color: white;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px var(--shadowColor);
 }
 
 /* hovering UI specified for searchedCitiesButtons class */
 .searchedCitiesButtons:hover {
     background-color: var(--lightblue);
-    
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadowColor);
+}
+
+.searchedCitiesButtons:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px var(--shadowColor);
 }
 
 /* immediateWeatherStyling class selector */
@@ -42,37 +94,77 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* border-style: solid; */
-    /* border-color: black; */
-    margin: 10px;
+    margin: 20px 10px;
+    padding: 30px;
     text-align: center;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--shadowColor);
 }
 
 /* immediateBorder class selector. Allows for it to toggle */
 .immediateBorder {
-    border-style: solid;
-    border-color: black;
+    border: 2px solid var(--borderLight);
+}
+
+/* 5-Day Forecast heading */
+.forecast-heading {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 30px 0 20px 0;
 }
 
 /* verticalCard class selector */
 .verticalCard {
-    background-color: var(--darkblue);
+    background: linear-gradient(135deg, var(--darkblue) 0%, #34495e 100%);
     color: white;
-    padding: 20px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--shadowColor);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 180px;
 }
 
-/* searcht-button id styling */
+.verticalCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* search-button id styling */
 #search-button {
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
     text-align: center;
-    margin: 10px 0px;
-    border-radius: 6px;
-    background-color: gray;
+    margin: 10px 0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background-color: var(--buttonGray);
+    color: white;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px var(--shadowColor);
 }
 
 /* hovering UI for search-button id */
-#search-button:hover{
+#search-button:hover {
     background-color: var(--lightblue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadowColor);
+}
+
+#search-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px var(--shadowColor);
+}
+
+#search-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
 }
