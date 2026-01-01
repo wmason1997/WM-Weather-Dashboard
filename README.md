@@ -2,7 +2,7 @@
 
 ## Description ##
 
-This Weather Dashboard was made to practice the use of third-party APIs and Bootstrap. I used the [5 Day Weather Forecast](https://openweathermap.org/forecast5) to retrieve weather data for the city's that the user searched for. I was happy to realize that certain CSS styling and manipulation was coming to me more naturally and required less documentation referencing during this project's development and I am excited to eventually enjoy that level of comfort with this sort of material down the road.
+This Weather Dashboard was made to practice the use of third-party APIs and Bootstrap. I used the [5 Day Weather Forecast](https://openweathermap.org/forecast5) to retrieve weather data for the cities that the user searched for. I was happy to realize that certain CSS styling and manipulation was coming to me more naturally and required less documentation referencing during this project's development and I am excited to eventually enjoy that level of comfort with this sort of material down the road.
 
 ## Credits ## 
 
@@ -17,9 +17,9 @@ I referenced [https://css-tricks.com/snippets/css/a-guide-to-flexbox/](https://c
 
 ## Screenshots of Deployed Application ##
 
-![Screenshot](assets/images/WM-Weather-Dashboard-Landing-Page.png)
-![Screenshot](assets/images/WM-Weather-Dashboard-Honolulu.png)
-![Screenshot](assets/images/WM-Weather-Dashboard-Los-Angeles.png)
+![Screenshot](assets/images/WM-Weather-Dashboard-Landing-Page-Updated.png)
+
+![Screenshot](assets/images/WM-Weather-Dashboard-New-York.png)
 
 
 ## Link to Deployed Application ##
